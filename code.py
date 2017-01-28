@@ -1,4 +1,5 @@
 import os
+from git import Repo
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -14,5 +15,9 @@ for link in splited:
 
 	splited_link = link.split("/")
 	repository_name = splited_link[4]
-	os.mkdir(ROOT_DIR + "/log_" + repository_name)
+
+	dir = ROOT_DIR + "/log_" + repository_name
+
+	os.mkdir(dir)
 	print("created dir for " + repository_name)
+	Repo.clone_from(link, dir)
