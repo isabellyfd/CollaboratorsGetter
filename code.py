@@ -23,5 +23,9 @@ for link in splited:
 
     Repo.clone_from(link, dir, branch="master")
 
-
     print("cloned repository")
+
+#subprocess.call(["cd " + dir, "git log --format=format:%an | sort | uniq -c | sort -nr | head -50 > log.txt"])
+
+    os.system("cd " + dir)
+    os.system("git log --format=format:%an | sort | uniq -c | sort -nr | head -50 > log.txt")
