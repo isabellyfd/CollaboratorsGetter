@@ -2,6 +2,7 @@ import os, subprocess
 from git import Repo
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+print(ROOT_DIR)
 
 file = open("in.txt", "r")
 
@@ -23,9 +24,11 @@ for link in splited:
 
     Repo.clone_from(link, dir, branch="master")
 
-    print("cloned repository")
+    print("cloned repository " +repository_name)
 
-#subprocess.call(["cd " + dir, "git log --format=format:%an | sort | uniq -c | sort -nr | head -50 > log.txt"])
-
-    os.system("cd " + dir)
+    os.chdir(dir)
     os.system("git log --format=format:%an | sort | uniq -c | sort -nr | head -50 > log.txt")
+
+    os.chdir(ROOT_DIR)
+
+
