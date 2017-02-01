@@ -27,7 +27,7 @@ for link in splited:
     print("cloned repository " +repository_name)
 
     os.chdir(dir)
-    os.system("git log --format=format:%an | sort | uniq -c | sort -nr | head -50 > log.txt")
+    os.system("git log --format=format:\'Author name: %an Author adress: %ae\' | sort | uniq -c | sort -nr | head -50 > log.txt")
 
     os.chdir(ROOT_DIR)
 
