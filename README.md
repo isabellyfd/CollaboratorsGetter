@@ -6,3 +6,12 @@
 		<li><a href="https://github.com/gitpython-developers/GitPython">GitPython</a></li>
 	</ul>
 </p>
+
+<h3>How to use</h3>
+<p>
+	<ol>
+		<li>In the in.txt file put every github link you want.</li>
+		<li>On terminal run the command: "python3 code.py"</li>
+		<li>A log.txt file is created in every folder related to the links you put in in.txt file with a sorted list of collaborators</li> 
+	</ol>
+</p>
