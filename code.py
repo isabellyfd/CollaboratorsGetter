@@ -13,22 +13,21 @@ del splited[0]
 
 for link in splited:
     print(link)
+    if (link != ''):
+        splited_link = link.split("/")
+        repository_name = splited_link[len(splited_link) - 1]
+        print(repository_name)
+        dir = ROOT_DIR + "/log_" + repository_name
+        print(dir)
 
-    splited_link = link.split("/")
-    repository_name = splited_link[4]
+        os.mkdir(dir)
+        print("created dir for " + repository_name)
 
-    dir = ROOT_DIR + "/log_" + repository_name
+        Repo.clone_from(link, dir, branch="master")
 
-    os.mkdir(dir)
-    print("created dir for " + repository_name)
+        print("cloned repository " +repository_name)
 
-    Repo.clone_from(link, dir, branch="master")
+        os.chdir(dir)
+        os.system("git log --format=format:\'Author name: %an %aN Author adress: %ae %aE  %ce %cE\' | sort | uniq -c | sort -nr | head -50 > log.txt")
 
-    print("cloned repository " +repository_name)
-
-    os.chdir(dir)
-    os.system("git log --format=format:\'Author name: %an %aN Author adress: %ae %aE  %ce %cE\' | sort | uniq -c | sort -nr | head -50 > log.txt")
-
-    os.chdir(ROOT_DIR)
-
-
+        os.chdir(ROOT_DIR)
